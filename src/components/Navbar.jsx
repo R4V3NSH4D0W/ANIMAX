@@ -2,13 +2,16 @@ import React from 'react'
 import {FaBars,FaTimes} from "react-icons/fa"
 import { useRef } from 'react'
 import { useState } from 'react'
+import { Link } from 'react-router-dom'
 
 const Navbar = () => {
   let Links=[
-    {name:"Home",link:"/"},
-    {name:"Top Anime",link:"/"},
-    {name:"New Seasons",link:"/"},
-    {name:"Movies",link:"/"},
+    {name:"search"},
+    {name:"Home"},
+    {name:"Top Anime"},
+    {name:"New Seasons"},
+    {name:"Movies"},
+  
 
   ];
   let [open,setOpen]=useState(false);
@@ -25,11 +28,14 @@ const Navbar = () => {
       <FaBars name={open ? 'close':'menu'}></FaBars>
       </div>
 
-      <ul className={`md:flex md:items-center md:pb-0  absolute md:static bg-white md:z-auto z-[-1] left-0 w-full md:w-auto md:pl-0 pl-9 transition-all duration-500 ease-in ${open ? 'top-10 ':'top-[-490px]'}`}>
+      <ul className={`md:flex md:items-center md:pb-0  absolute md:static bg-white md:z-auto z-[-1] left-0 w-full md:w-auto md:pl-0 pl-9 transition-all duration-300 ease-in ${open ? 'top-10 ':'top-[-490px]'}`}>
         {
+         
           Links.map((link)=>(
             <li key={link.name} className='md:ml-8 text-xl md:my-0 my-6'>
-              <a href={link.link} className='text-gray-800 hover:text-cyan-400 duration-300'>{link.name}</a>
+              <Link to={`/${link.name}`}>
+              <h1 className='text-gray-800 hover:text-cyan-400 duration-300'>{link.name}</h1>
+              </Link>
             </li>
           ))
         }
