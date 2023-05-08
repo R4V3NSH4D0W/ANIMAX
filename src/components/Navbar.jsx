@@ -15,14 +15,19 @@ const Navbar = () => {
 
   ];
   let [open,setOpen]=useState(false);
+  const handleLinkClick = () => {
+    setOpen(false);
+  };
   return (
   <>
    <div className='shadow-md w-full fixed top-0 left-0 z-50'>
       <div className='md:flex items-center justify-between bg-white py-4 md:px-10 px-7'>
+        <Link to={`/Home`}>
       <div className='font-bold text-2xl cursor-pointer flex items-center 
       text-gray-800'>
        ANIMAX
       </div>
+      </Link>
       
       <div onClick={()=>setOpen(!open)} className='text-3xl absolute right-8 top-6 cursor-pointer md:hidden'>
       <FaBars name={open ? 'close':'menu'}></FaBars>
@@ -33,7 +38,7 @@ const Navbar = () => {
          
           Links.map((link)=>(
             <li key={link.name} className='md:ml-8 text-xl md:my-0 my-6'>
-              <Link to={`/${link.name}`}>
+              <Link to={`/${link.name}`} onClick={handleLinkClick}>
               <h1 className='text-gray-800 hover:text-cyan-400 duration-300'>{link.name}</h1>
               </Link>
             </li>

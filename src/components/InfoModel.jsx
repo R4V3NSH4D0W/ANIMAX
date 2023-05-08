@@ -75,7 +75,7 @@ const InfoModel = () => {
       <h2 className=' font-extrabold md:text-xl p-4'>Episodes</h2>
       <div className="p-2 pl-6 flex flex-wrap gap-2 lg:flex-nowrap">
   {anime?.episodes?.map((episode) => (
-    <Link to={`/episode/${episode.id}`}>
+    <Link to={`/episode/${episode.id}`} key={episode?.id}>
       <button key={episode.id} className="bg-black rounded w-10 h-8 text-white">
         {episode.number}
       </button>
