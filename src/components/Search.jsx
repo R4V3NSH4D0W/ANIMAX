@@ -79,7 +79,7 @@ const Search = () => {
           {result?.map((result) => (
             <Link to={`/info/${result?.id}`} key={result?.id}>
               <div className="relative">
-                <img src={result.image} className="w-[11rem] h-auto lg:w-[16rem]" />
+                <img src={result.image} className="w-[11rem] h-[16rem] object-cover lg:h-[20rem] lg:w-[16rem]" />
                 <div className="absolute inset-0 flex items-center justify-center opacity-0 hover:opacity-100 transition-opacity duration-300 bg-black bg-opacity-50 text-white text-center">
                   <span className="text-sm lg:text-xl font-black">{result.title}</span>
                 </div>

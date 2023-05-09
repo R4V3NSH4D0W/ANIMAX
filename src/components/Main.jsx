@@ -1,18 +1,20 @@
 import React, { useState, useEffect, useRef } from 'react';
 import axios from 'axios';
 import { FaChevronLeft, FaChevronRight } from 'react-icons/fa';
-
+import { Link } from 'react-router-dom';
+import ex from '../assets/ex.gif'
 const Main = () => {
   const [movies, setMovies] = useState([]);
   const [currentSlide, setCurrentSlide] = useState(0);
   const touchStartX = useRef(null);
-
+  const [isLoading, setIsLoading] = useState(true);
   useEffect(() => {
     const fetchMovies = async () => {
       try {
         const url = "https://api.consumet.org/anime/gogoanime/top-airing";
         const { data } = await axios.get(url, { params: { page: 1 } });
         setMovies(data.results);
+        setIsLoading(false);
       } catch (err) {
         throw new Error(err.message);
       }
@@ -20,6 +22,20 @@ const Main = () => {
 
     fetchMovies();
   }, []);
+  if (isLoading) {
+    return (
+      <div
+        style={{
+          display: 'flex',
+          justifyContent: 'center',
+          alignItems: 'center',
+          height: '100vh',
+        }}
+      >
+        <img src={ex} alt="loading"/>
+       </div>
+    );
+  }
 
   const handlePrevSlide = () => {
     setCurrentSlide((prevSlide) => (prevSlide === 0 ? movies.length - 1 : prevSlide - 1));
@@ -65,12 +81,16 @@ const Main = () => {
                   {movies[currentSlide]?.title}
                 </h1>
                 <div className='my-4'>
+                  <Link to={`/episode/${movies[currentSlide]?.id}-episode-1`}>
                   <button className='border bg-gray-300 text-black border-gray-300 py-2 px-5'>
                     Watch Now
                   </button>
+                  </Link>
+                  <Link to={`/info/${movies[currentSlide]?.id}`}>
                   <button className='border text-white border-gray-300 py-2 px-5 ml-4'>
                    Detail
                   </button>
+                  </Link>
                 </div>
                 <p className='text-sm text-white'>Genres: {movies[currentSlide]?.genres.join(', ')} </p>
               </div>

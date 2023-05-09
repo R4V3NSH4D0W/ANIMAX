@@ -4,6 +4,7 @@ import axios from 'axios'
 import { useState,useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import loading from '../assets/loading.gif'
+import { useCookies } from 'react-cookie';
 const InfoModel = () => {
     const {id}=useParams();
     const [anime,setAnime]=useState({})
@@ -63,9 +64,12 @@ const InfoModel = () => {
                   {anime?.title}
                 </h1>
                 <div className='my-4'>
-                  <button className='border bg-gray-300 text-black border-gray-300 py-2 px-5'>
+                  <Link to={`/episode/${anime?.id}-episode-1`}>
+                  <button className='border bg-gray-300 text-black border-gray-300 py-2 px-5'
+                  >
                     Watch Now
                   </button>
+                  </Link>
                 </div>
                 <p className='text-sm text-white'>Genres: {anime && anime.genres && anime.genres.join(' ')} </p>
 
@@ -75,7 +79,7 @@ const InfoModel = () => {
       <h2 className=' font-extrabold md:text-xl p-4'>Episodes</h2>
       <div className="p-2 pl-6 flex flex-wrap gap-2 lg:flex-nowrap">
   {anime?.episodes?.map((episode) => (
-    <Link to={`/episode/${episode.id}`} key={episode?.id}>
+    <Link to={`/episode/${episode.id}`} key={episode?.id}state={{ anime: anime }} >
       <button key={episode.id} className="bg-black rounded w-10 h-8 text-white">
         {episode.number}
       </button>
