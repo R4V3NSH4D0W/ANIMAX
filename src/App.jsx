@@ -5,6 +5,7 @@ import Home from './pages/Home'
 import InfoModel from './components/InfoModel'
 import Watch from './components/Video/Watch'
 import Search from './components/Search'
+import Lists from './components/Video/Lists'
 export const App = () => {
   return (
   <>
@@ -15,6 +16,9 @@ export const App = () => {
     <Route path='/info/:id' element={<InfoModel/>}/> 
     <Route path='/episode/:id' element={<Watch/>}/> 
     <Route path='/search' element={<Search/>}/> 
+    <Route path='/TopAnime' element={<Lists/>}/>
+    <Route path='/Movies' element={<Lists/>}/>
+    <Route path='/NewSeasons' element={<Lists/>}/>
   </Routes>
   </>
   )

@@ -3,6 +3,7 @@ import axios from 'axios';
 import { useParams, useLocation ,useNavigate} from 'react-router-dom';
 import loading from '../../assets/loading.gif';
 import {FaPlay} from 'react-icons/fa'
+import AnimeList from '../AnimeList';
 const Watch = () => {
   const { id } = useParams();
   const updatedUrl = id.replace(/-episode-\d+/, '');
@@ -128,7 +129,7 @@ const changeEpisode=(episodeID)=>{
   
 </div>
    
-
+{/* <AnimeList/> */}
     </>
   );
 };

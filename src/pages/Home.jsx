@@ -7,7 +7,7 @@ const Home = () => {
     <>
      <Main/>
   <Card rowID='1' title='Trending' fetchURL={request.requestTrending}/>
-  <Card rowID='2' title='Popular' fetchURL={request.requestPopular}/>
+  <Card rowID='2' title='New Episodes' fetchURL={request.requestPopular}/>
     </>
    
   )

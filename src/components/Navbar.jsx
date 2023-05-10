@@ -3,14 +3,14 @@ import {FaBars,FaTimes} from "react-icons/fa"
 import { useRef } from 'react'
 import { useState } from 'react'
 import { Link } from 'react-router-dom'
-
+import request from '../Request'
 const Navbar = () => {
   let Links=[
     {name:"search"},
     {name:"Home"},
-    {name:"Top Anime"},
-    {name:"New Seasons"},
-    {name:"Movies"},
+    {name:"TopAnime",request:request?.requestTrending},
+    {name:"NewSeasons",request:request?.requestnewSeason},
+    {name:"Movies",request:request?.requestMovie},
   
 
   ];
@@ -38,7 +38,7 @@ const Navbar = () => {
          
           Links.map((link)=>(
             <li key={link.name} className='md:ml-8 text-xl md:my-0 my-6'>
-              <Link to={`/${link.name}`} onClick={handleLinkClick}>
+              <Link to={`/${link.name}` } onClick={handleLinkClick} state={{request:link.request}}>
               <h1 className='text-gray-800 hover:text-cyan-400 duration-300'>{link.name}</h1>
               </Link>
             </li>
