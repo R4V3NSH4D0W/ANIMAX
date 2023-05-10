@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { useParams, useLocation ,useNavigate} from 'react-router-dom';
 import loading from '../../assets/loading.gif';
-import { Link } from 'react-router-dom';
+import {FaPlay} from 'react-icons/fa'
 const Watch = () => {
   const { id } = useParams();
   const updatedUrl = id.replace(/-episode-\d+/, '');
@@ -49,6 +49,7 @@ fetchEpisodes();
     fetchData();
   }, [id]);
   const handleServerSelection = (serverUrl) => {
+    setIsLoading(false);
     setSelectedServer(serverUrl);
   };
 
@@ -76,12 +77,15 @@ const changeEpisode=(episodeID)=>{
     <div className="flex flex-col mt-[4rem] md:flex-row">
   <div className="w-full md:w-1/5 order-2 lg:order-2   pt-4">
   <span className=' font-black text-xl lg:text-2xl'>List of Episodes:</span>
-  <div className='mt-4 w-full text-white'>
+  <div className='mt-4 w-full text-white max-h-[10rem] lg:max-h-[32rem] overflow-y-scroll scrollbar-hide'>
   {episodelist?.episodes?.map((list, index) => (
-    <div key={list.id} className={`${index % 2 === 0 ? 'bg-gray-400 hover:bg-gray-500' : 'bg-gray-700 hover:bg-gray-800'} text-white text-md lg:text-sm flex justify-center h-10`}>
-      <button onClick={() => changeEpisode(list.id)}>
+    <div key={list.id} className={`${index % 2 === 0 ? ' bg-gray-100 hover:bg-gray-200' : 'bg-gray-300 hover:bg-gray-400'} text-black font-bold text-md lg:text-sm flex justify-between flex-row h-10`}>
+      <button onClick={() => changeEpisode(list.id)} className=' pl-4'>
       {list.id.replace(/-/g, ' ')}
       </button>
+      <div>
+      {id==list.id?<FaPlay className=' mr-4 mt-3 text-blue-500'/>:"  "}
+      </div>
     </div>
   ))}
   </div>
@@ -90,12 +94,12 @@ const changeEpisode=(episodeID)=>{
   <iframe
       src={selectedServer}
       title="Selected Server"
-      className="w-full h-[30vh] lg:h-[72vh]"
+      className="w-full h-[30vh] lg:h-[73vh]"
       allowFullScreen
       scrolling="no"
     ></iframe>
     
-    <div className="flex flex-wrap p-2 bg-slate-600 lg:justify-center">
+    <div className="flex flex-wrap p-2 lg:justify-center">
       {ep.map((item, index) => (
         <button
           key={index}

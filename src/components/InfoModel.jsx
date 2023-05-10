@@ -25,13 +25,13 @@ const InfoModel = () => {
         fetchData();
     },[id])
     console.log(anime)
-    const truncateString=(str,num)=>{
-        if(str?.length>num){
-            return str.slice(0,num)+'...';
-        }else{
-            return str;
-        }
-    }
+    // const truncateString=(str,num)=>{
+    //     if(str?.length>num){
+    //         return str.slice(0,num)+'...';
+    //     }else{
+    //         return str;
+    //     }
+    // }
     if (isLoading) {
         return (
           <div
@@ -71,13 +71,13 @@ const InfoModel = () => {
                   </button>
                   </Link>
                 </div>
-                <p className='text-sm text-white'>Genres: {anime && anime.genres && anime.genres.join(' ')} </p>
+                <p className='text-sm font-bold text-white'>Genres: {anime && anime.genres && anime.genres.join(' ')} </p>
 
-                <p className='w-full md:max-w-[70%] lg:max-w-[50%] xl:max-w-[65%] text-gray-200'>{truncateString(anime?.description,400)}</p>
+                <p className='pt-4 w-full md:max-w-[70%] lg:max-w-[50%] xl:max-w-[65%] text-gray-200 max-h-[14rem] overflow-y-scroll  scrollbar-hide'>{anime?.description}</p>
               </div>
       </div>
       <h2 className=' font-extrabold md:text-xl p-4'>Episodes</h2>
-      <div className="p-2 pl-6 flex flex-wrap gap-2 lg:flex-nowrap">
+      <div className="p-2 pl-6 flex flex-wrap gap-2 ">
   {anime?.episodes?.map((episode) => (
         // <Link to={`/episode/${episode.id}`} key={episode?.id}state={{ anime: anime }} ></Link>
     <Link to={`/episode/${episode.id}`} key={episode?.id}>
