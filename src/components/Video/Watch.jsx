@@ -75,14 +75,14 @@ const changeEpisode=(episodeID)=>{
 }
   return (
     <>
-    <div className="flex flex-col mt-[4rem] md:flex-row">
-  <div className="w-full md:w-1/5 order-2 lg:order-2   pt-4">
+    <div className="flex flex-col mt-[4rem] md:flex-col lg:flex-row">
+  <div className="w-full lg:w-1/5 order-2 lg:order-2 sm:order-2 md:order-2 pt-4">
   <span className=' font-black text-xl lg:text-2xl'>List of Episodes:</span>
   <div className='mt-4 w-full text-white max-h-[10rem] lg:max-h-[32rem] overflow-y-scroll scrollbar-hide'>
   {episodelist?.episodes?.map((list, index) => (
     <div key={list.id} className={`${index % 2 === 0 ? ' bg-gray-100 hover:bg-gray-200' : 'bg-gray-300 hover:bg-gray-400'} text-black font-bold text-md lg:text-sm flex justify-between flex-row h-10`}>
       <button onClick={() => changeEpisode(list.id)} className=' pl-4'>
-      {list.id.replace(/-/g, ' ')}
+      <span>Episode {list?.number}</span>
       </button>
       <div>
       {id==list.id?<FaPlay className=' mr-4 mt-3 text-blue-500'/>:"  "}
@@ -91,16 +91,16 @@ const changeEpisode=(episodeID)=>{
   ))}
   </div>
 </div>
-  <div className="w-full md:w-3/5 order-1 lg:order-2">
+  <div className="w-full lg:w-3/5 order-1 lg:order-2  md:order-1">
   <iframe
       src={selectedServer}
       title="Selected Server"
-      className="w-full h-[30vh] lg:h-[73vh]"
+      className="w-full h-[31vh]  lg:h-[40vh] xl:h-[70vh] sm:h-[45vh] md:h-[40vh]"
       allowFullScreen
       scrolling="no"
     ></iframe>
     
-    <div className="flex flex-wrap p-2 lg:justify-center">
+    <div className="flex flex-wrap p-2 lg:justify-center md:justify-center">
       {ep.map((item, index) => (
         <button
           key={index}
@@ -114,9 +114,9 @@ const changeEpisode=(episodeID)=>{
       ))}
     </div>
   </div>
-  <div className="w-full md:w-1/5 order-3 lg:order-3">
-  <div className="flex flex-row lg:flex-col">
-    <img src={episodelist?.image} className="p-2 h-[15rem] lg:h-[23rem]" />
+  <div className="w-full lg:w-1/5 order-3 lg:order-3">
+  <div className="flex flex-row lg:flex-col md:flex-row">
+    <img src={episodelist?.image} className="p-2 h-[15rem] lg:h-[24rem] object-cover" />
     <div className="flex flex-col">
       <span className="p-2 font-bold text-xl">{episodelist?.title}</span>
       <div className="p-2 font-bold text-sm max-h-[12rem] overflow-y-scroll scrollbar-hide ">

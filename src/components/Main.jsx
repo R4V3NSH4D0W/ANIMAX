@@ -2,7 +2,7 @@ import React, { useState, useEffect, useRef } from 'react';
 import axios from 'axios';
 import { FaChevronLeft, FaChevronRight } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
-import ex from '../assets/ex.gif'
+import cute from '../assets/cute.gif'
 const Main = () => {
   const [movies, setMovies] = useState([]);
   const [currentSlide, setCurrentSlide] = useState(0);
@@ -32,7 +32,7 @@ const Main = () => {
           height: '100vh',
         }}
       >
-        <img src={ex} alt="loading"/>
+        <img src={cute} alt="loading"/>
        </div>
     );
   }

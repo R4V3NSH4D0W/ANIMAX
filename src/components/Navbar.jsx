@@ -11,6 +11,7 @@ const Navbar = () => {
     {name:"TopAnime",request:request?.requestTrending},
     {name:"NewSeasons",request:request?.requestnewSeason},
     {name:"Movies",request:request?.requestMovie},
+    {name:"WatchList"}
   
 
   ];
@@ -22,12 +23,14 @@ const Navbar = () => {
   <>
    <div className='shadow-md w-full fixed top-0 left-0 z-50'>
       <div className='md:flex items-center justify-between bg-white py-4 md:px-10 px-7'>
-        <Link to={`/Home`}>
+     
       <div className='font-bold text-2xl cursor-pointer flex items-center 
       text-gray-800'>
+           <Link to={`/Home`}>
        ANIMAX
+       </Link>
       </div>
-      </Link>
+    
       
       <div onClick={()=>setOpen(!open)} className='text-3xl absolute right-8 top-6 cursor-pointer md:hidden'>
       <FaBars name={open ? 'close':'menu'}></FaBars>
