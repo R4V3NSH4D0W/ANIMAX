@@ -16,6 +16,7 @@ const Watch = () => {
   const [ep, setEpisodes] = useState([]);
   const [selectedServer, setSelectedServer] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
+  const [isVideoReady, setIsVideoReady] = useState(false);
   console.log(ep)
  useEffect(()=>{
   const fetchEpisodes=async()=>{
@@ -41,6 +42,7 @@ fetchEpisodes();
         setEpisodes(data);
         setSelectedServer(data[0].url);
         setIsLoading(false);
+        setIsVideoReady(true);
       } catch (error) {
         console.log(error);
         setIsLoading(false);
@@ -72,6 +74,20 @@ const changeEpisode=(episodeID)=>{
   setSelectedServer(null)
   navigate(`/episode/${episodeID}`)
 
+}
+if (isLoading || !isVideoReady) {
+  return (
+    <div
+      style={{
+        display: 'flex',
+        justifyContent: 'center',
+        alignItems: 'center',
+        height: '100vh',
+      }}
+    >
+      <img src={loading} alt="loading" />
+    </div>
+  );
 }
   return (
     <>

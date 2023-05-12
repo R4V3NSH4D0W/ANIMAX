@@ -1,10 +1,11 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
+import nothing from '../assets/nothing.gif'
 const WatchList = () => {
   const [watchList, setWatchList] = useState([]);
   const [results, setResults] = useState([]);
-
+  const [loading,setLoading]=useState(true)
   useEffect(() => {
     const storedWatchList = JSON.parse(localStorage.getItem('watchList')) || [];
     setWatchList(storedWatchList);
@@ -17,12 +18,14 @@ const WatchList = () => {
         const fetchResults = await Promise.all(
           watchList.map(async (animeId) => {
             const response = await axios.get(`https://api.consumet.org/anime/gogoanime/info/${animeId}`);
+            setLoading(false)
             return response.data;
           })
         );
 
         setResults(fetchResults);
       } catch (error) {
+        setLoading(false)
         console.log(error);
       }
     };
@@ -31,7 +34,23 @@ const WatchList = () => {
   }, [watchList]);
 
 //   console.log(watchList);
-//   console.log(results);
+  // console.log(results);
+if(loading) {
+    return (
+      <div
+        style={{
+          display: 'flex',
+          justifyContent: 'center',
+          alignItems: 'center',
+          height: '100vh',
+        }}
+        className=' flex flex-col'
+      >
+        <img src={nothing} alt="loading" className=' h-[12rem] lg:h-[20rem]' />
+        {results.length===0?<span className=' font-bold text-2xl lg:text-3xl'>Nothing to See here OOPS!!</span>:<span className=' font-bold text-2xl lg:text-3xl'>Waiting</span>}
+      </div>
+    );
+  }
 
   return (
     <>

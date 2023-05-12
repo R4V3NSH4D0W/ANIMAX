@@ -1,11 +1,7 @@
-
-
 import axios from 'axios'
-
 import { Link } from 'react-router-dom'
 import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
-
 import cute from '../assets/cute.gif';
 
 const InfoModel = () => {
@@ -37,6 +33,7 @@ const InfoModel = () => {
   const HandelwatchList = (animeId) => {
     const isAlreadyAdded = watchList.includes(animeId);
     if (isAlreadyAdded) {
+      //filter will remove id 
       const updatedWatchList = watchList.filter((id) => id !== animeId);
       setWatchList(updatedWatchList);
       // Update the watch list in localStorage
@@ -69,15 +66,20 @@ const InfoModel = () => {
 
   const renderWatchListButton = () => {
     if (watchList.includes(anime?.id)) {
-      return <button className=' border text-white border-gray-300 py-2 px-5 ml-4'  onClick={() => HandelwatchList(anime?.id)}>Remove From WatchList</button>;
+      return <button className=' border text-white border-gray-300 py-2 px-5 ml-4'  onClick={() => HandelwatchList(anime?.id)}>
+          Remove WatchList
+         </button>;
     } else {
       return (
-        <button
+        <>
+         <button
           className="border text-white border-gray-300 py-2 px-5 ml-4"
           onClick={() => HandelwatchList(anime?.id)}
         >
-          Add To Watch List
+        Add to WatchList
         </button>
+        </>
+       
       );
     }
   };
