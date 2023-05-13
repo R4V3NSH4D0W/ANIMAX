@@ -1,12 +1,11 @@
 import React from 'react'
-import {FaBars,FaTimes} from "react-icons/fa"
-import { useRef } from 'react'
+import {FaBars,FaSearch} from "react-icons/fa"
 import { useState } from 'react'
 import { Link } from 'react-router-dom'
 import request from '../Request'
 const Navbar = () => {
   let Links=[
-    {name:"search"},
+    {name:"Search"},
     {name:"Home"},
     {name:"TopAnime",request:request?.requestTrending},
     {name:"NewSeasons",request:request?.requestnewSeason},

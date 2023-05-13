@@ -112,8 +112,13 @@ const InfoModel = () => {
                   {renderWatchListButton()}
                   
                 </div>
-                <p className='text-sm font-bold text-white'>Genres: {anime && anime.genres && anime.genres.join(' ')} </p>
-
+                <p className='text-md font-bold text-white'>Genres: {anime && anime.genres && anime.genres.join(' ')} </p>
+                <p className='text-sm font-bold text-white'>Released Date: {anime?.releaseDate} </p>
+                {anime?.status === "Ongoing" ? (
+                    <p className="text-md font-bold text-green-500">Status: {anime?.status}</p>
+                  ) : (
+                    <p className="text-md font-bold text-yellow-500">Status: {anime?.status}</p>
+                  )}
                 <p className='pt-4 w-full md:max-w-[70%] lg:max-w-[50%] xl:max-w-[65%] text-gray-200 max-h-[10rem] overflow-y-scroll  scrollbar-hide'>{anime?.description}</p>
               </div>
       </div>
