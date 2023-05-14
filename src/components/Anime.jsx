@@ -10,10 +10,6 @@ const Anime = ({item}) => {
     <Link to={`/info/${item?.id}`}>
         <p className=' whitespace-normal text-xl md:text-sm font-bold flex justify-center items-center h-full text-center'>{item?.title}</p>
         </Link>
-        {/* <p onClick={saveShow}> */}
-        {/* <p >
-            {like?<FaHeart className=' absolute top-4 left-4 text-gray-300'/>:<FaRegHeart className=' absolute top-4 left-4 text-gray-300'/>}
-        </p> */}
         </div>
         </div>
   )

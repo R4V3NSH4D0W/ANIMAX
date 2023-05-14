@@ -121,7 +121,7 @@ if (isLoading || !isVideoReady) {
         <button
           key={index}
           onClick={() => handleServerSelection(item.url)}
-          className={`bg-gray-200 rounded px-4 py-2 mr-2 mb-2 w-[115px] font-bold text-sm lg:text-md flex justify-center ${
+          className={`bg-gray-200 rounded px-4 py-2 m-1 mb-2 w-[6.6rem] font-bold text-sm lg:text-md flex justify-center ${
             selectedServer === item.url ? 'bg-gray-400' : ''
           }`}
         >
